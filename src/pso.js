@@ -3,12 +3,12 @@
 	'use strict';
 
 	// Defines a candidate solution
-	function Particle(position, velocity, options) {
+	function Particle(position, velocity, options, restore) {
 		this.position = position;
 		this.velocity = velocity;
-		this.bestPosition = new Array(this.position.length);
-		this.fitness = -Infinity;
-		this.bestFitness = -Infinity;
+		this.bestPosition = (restore && restore.bestPosition) ? restore.bestPosition.slice(0) : new Array(this.position.length);
+		this.fitness = (restore && restore.fitness !== undefined) ? restore.fitness : -Infinity;
+		this.bestFitness = (restore && restore.bestFitness !== undefined) ? restore.bestFitness : -Infinity;
 
 		this._inertiaWeight = options.inertiaWeight;
 		this._social = options.social;
