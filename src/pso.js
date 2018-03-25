@@ -224,6 +224,7 @@
 			return this._particles.map(function (particle) {
 				return {
 					position: particle.getPosition(),
+					velocity : particle.velocity,
 					fitness: particle.fitness,
 					bestPosition: particle.getBestPosition(),
 					bestFitness: particle.bestFitness
