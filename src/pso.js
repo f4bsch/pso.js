@@ -4,6 +4,10 @@
 
 	// Defines a candidate solution
 	function Particle(position, velocity, options, restore) {
+		if(!Array.isArray(position) || !Array.isArray(velocity) || position.length != velocity.length) {
+			console.debug( JSON.stringify({position, velocity}));
+			throw new Error('invalid position and/or velocity');
+		}
 		this.position = position;
 		this.velocity = velocity;
 		this.bestPosition = (restore && restore.bestPosition) ? restore.bestPosition.slice(0) : new Array(this.position.length);
